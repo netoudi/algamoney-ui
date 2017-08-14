@@ -6,6 +6,7 @@ body {
 }
 
 a {
+  color: #337ab7;
   text-decoration: none;
 
   &:hover, &:focus {
@@ -37,4 +38,8 @@ label {
 .col-acoes {
   width: 90px;
   text-align: center;
+}
+
+.ui-dropdown-filter-container {
+  width: 100%;
 }
