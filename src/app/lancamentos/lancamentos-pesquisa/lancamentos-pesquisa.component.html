@@ -4,22 +4,26 @@
       <h1>Lançamentos</h1>
     </div>
 
-    <div class="ui-g-12 ui-fluid">
-      <label>Descrição</label>
-      <input pInputText type="text">
-    </div>
+    <form autocomplete="off" (submit)="pesquisar()">
+      <div class="ui-g-12 ui-fluid">
+        <label>Descrição</label>
+        <input pInputText type="text" name="descricao" [(ngModel)]="filtro.descricao">
+      </div>
 
-    <div class="ui-g-12">
-      <label style="display: block">Vencimento</label>
+      <div class="ui-g-12">
+        <label style="display: block">Vencimento</label>
 
-      <input pInputText type="text" style="width: 95px">
-      <label>até</label>
-      <input pInputText type="text" style="width: 95px">
-    </div>
+        <p-calendar format="dd/mm/yyyy" [inputStyle]="{ width: '95px'}" name="vencimentoDe"
+                    [(ngModel)]="filtro.dataVencimentoDe"></p-calendar>
+        <label>até</label>
+        <p-calendar format="dd/mm/yyyy" [inputStyle]="{ width: '95px'}" name="vencimentoAte"
+                    [(ngModel)]="filtro.dataVencimentoAte"></p-calendar>
+      </div>
 
-    <div class="ui-g-12">
-      <button pButton type="submit" label="Pesquisar"></button>
-    </div>
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Pesquisar"></button>
+      </div>
+    </form>
   </div>
 
   <div class="ui-g">
