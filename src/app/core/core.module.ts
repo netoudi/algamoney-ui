@@ -2,15 +2,19 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { NavbarComponent } from './navbar/navbar.component';
+import { LancamentoService } from '../lancamentos/lancamento.service';
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  exports: [
+  declarations: [
     NavbarComponent
   ],
-  declarations: [
+  providers: [
+    LancamentoService
+  ],
+  exports: [
     NavbarComponent
   ]
 })
