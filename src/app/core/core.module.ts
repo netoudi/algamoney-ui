@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { LancamentoService } from '../lancamentos/lancamento.service';
+import { ErrorHandlerService } from './error-handler.service';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { LancamentoService } from '../lancamentos/lancamento.service';
     NavbarComponent
   ],
   providers: [
-    LancamentoService
+    LancamentoService,
+    ErrorHandlerService
   ],
   exports: [
     NavbarComponent
