@@ -8,6 +8,7 @@ import { ErrorHandlerService } from './error-handler.service';
 import { CategoriaService } from '../categorias/categoria.service';
 import { PessoaService } from '../pessoas/pessoa.service';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
+import { NaoAutorizadoComponent } from './nao-autorizado.component';
 import { AuthService } from '../seguranca/auth.service';
 import { JwtHelper } from 'angular2-jwt';
 
@@ -18,7 +19,8 @@ import { JwtHelper } from 'angular2-jwt';
   ],
   declarations: [
     NavbarComponent,
-    PaginaNaoEncontradaComponent
+    PaginaNaoEncontradaComponent,
+    NaoAutorizadoComponent
   ],
   providers: [
     LancamentoService,

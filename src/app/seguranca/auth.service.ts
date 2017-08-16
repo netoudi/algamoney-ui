@@ -67,8 +67,18 @@ export class AuthService {
     return !token || this.jwtHelper.isTokenExpired(token);
   }
 
-  temPermissao(permissao: string) {
+  temPermissao(permissao: string): boolean {
     return this.jwtPayload && this.jwtPayload.authorities.includes(permissao);
+  }
+
+  temQualquerPermissao(roles: any): boolean {
+    for (const role of roles) {
+      if (this.temPermissao(role)) {
+        return true;
+      }
+    }
+
+    return false;
   }
 
   private armazenarToken(token: string) {
