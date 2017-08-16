@@ -7,6 +7,7 @@ import { LancamentoService } from '../lancamentos/lancamento.service';
 import { ErrorHandlerService } from './error-handler.service';
 import { CategoriaService } from '../categorias/categoria.service';
 import { PessoaService } from '../pessoas/pessoa.service';
+import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { PessoaService } from '../pessoas/pessoa.service';
     RouterModule
   ],
   declarations: [
-    NavbarComponent
+    NavbarComponent,
+    PaginaNaoEncontradaComponent
   ],
   providers: [
     LancamentoService,
