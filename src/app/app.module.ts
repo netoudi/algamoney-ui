@@ -10,9 +10,10 @@ import { ConfirmationService } from 'primeng/components/common/api';
 import { CoreModule } from './core/core.module';
 import { PessoasModule } from './pessoas/pessoas.module';
 import { LacamentosModule } from './lancamentos/lacamentos.module';
+import { SegurancaModule } from './seguranca/seguranca.module';
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { AppRoutingModule } from './app-routing.module';
     CoreModule,
     PessoasModule,
     LacamentosModule,
+    SegurancaModule,
     AppRoutingModule
   ],
   providers: [
