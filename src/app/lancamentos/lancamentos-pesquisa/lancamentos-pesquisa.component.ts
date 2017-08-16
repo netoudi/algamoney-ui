@@ -26,7 +26,7 @@ export class LancamentosPesquisaComponent implements OnInit {
     // this.pesquisar();
   }
 
-  private pesquisar(pagina = 0) {
+  pesquisar(pagina = 0) {
     this.filtro.pagina = pagina;
 
     this.lancamentoService.pesquisar(this.filtro)

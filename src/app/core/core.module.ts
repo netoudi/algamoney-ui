@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { LancamentoService } from '../lancamentos/lancamento.service';
@@ -9,7 +10,8 @@ import { PessoaService } from '../pessoas/pessoa.service';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   declarations: [
     NavbarComponent
