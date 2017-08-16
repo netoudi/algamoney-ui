@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
@@ -29,21 +30,59 @@ export class LancamentoCadastroComponent implements OnInit {
               private pessoaService: PessoaService,
               private lancamentoService: LancamentoService,
               private toasty: ToastyService,
-              private errorHandler: ErrorHandlerService) { }
+              private errorHandler: ErrorHandlerService,
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
+    const codigoLancamento = this.route.snapshot.params['codigo'];
+
+    if (codigoLancamento) {
+      this.carregarLancamento(codigoLancamento);
+    }
+
     this.carregarCategorias();
     this.carregarPessoas();
   }
 
+  get editando(): boolean {
+    return Boolean(this.lancamento.codigo);
+  }
+
+  novo(form: FormControl) {
+    form.reset();
+
+    setTimeout(function () {
+      this.lancamento = new Lancamento();
+    }.bind(this), 1);
+
+    this.router.navigate(['lancamentos/novo']);
+  }
+
   salvar(form: FormControl) {
-    console.log(form);
+    if (this.editando) {
+      this.atualizarLancamento(form);
+    } else {
+      this.adicionarLancamento(form);
+    }
+  }
+
+  private adicionarLancamento(form: FormControl) {
     this.lancamentoService.adicionar(this.lancamento)
-      .then(lacamento => {
+      .then(lancamento => {
         this.toasty.success('Lançamento adicionando com sucesso!');
 
-        form.reset();
-        this.lancamento = new Lancamento();
+        this.router.navigate(['/lancamentos', lancamento.codigo]);
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  private atualizarLancamento(form: FormControl) {
+    this.lancamentoService.atualizar(this.lancamento)
+      .then(lacamento => {
+        this.lancamento = lacamento;
+
+        this.toasty.success('Lançamento alterado com sucesso!');
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
@@ -60,4 +99,11 @@ export class LancamentoCadastroComponent implements OnInit {
       .catch(erro => this.errorHandler.handle(erro));
   }
 
+  private carregarLancamento(codigo: number) {
+    this.lancamentoService.buscarPorCodigo(codigo)
+      .then(lancamento => {
+        this.lancamento = lancamento;
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+  }
 }
