@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LancamentoFiltro, LancamentoService } from '../lancamento.service';
 
@@ -19,11 +20,12 @@ export class LancamentosPesquisaComponent implements OnInit {
 
   constructor(private lancamentoService: LancamentoService,
               private toasty: ToastyService,
-              private  confirmation: ConfirmationService,
-              private errorHandle: ErrorHandlerService) {}
+              private confirmation: ConfirmationService,
+              private errorHandle: ErrorHandlerService,
+              private title: Title) {}
 
   ngOnInit() {
-    // this.pesquisar();
+    this.title.setTitle('Pesquisa de lançamento');
   }
 
   pesquisar(pagina = 0) {
