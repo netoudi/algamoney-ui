@@ -8,6 +8,8 @@ import { ErrorHandlerService } from './error-handler.service';
 import { CategoriaService } from '../categorias/categoria.service';
 import { PessoaService } from '../pessoas/pessoa.service';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
+import { AuthService } from '../seguranca/auth.service';
+import { JwtHelper } from 'angular2-jwt';
 
 @NgModule({
   imports: [
@@ -22,7 +24,10 @@ import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component'
     LancamentoService,
     CategoriaService,
     PessoaService,
-    ErrorHandlerService
+    ErrorHandlerService,
+    AuthService,
+
+    JwtHelper
   ],
   exports: [
     NavbarComponent
