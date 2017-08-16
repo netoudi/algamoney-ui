@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LancamentoService } from '../lancamentos/lancamento.service';
 import { ErrorHandlerService } from './error-handler.service';
+import { CategoriaService } from '../categorias/categoria.service';
+import { PessoaService } from '../pessoas/pessoa.service';
 
 @NgModule({
   imports: [
@@ -14,6 +16,8 @@ import { ErrorHandlerService } from './error-handler.service';
   ],
   providers: [
     LancamentoService,
+    CategoriaService,
+    PessoaService,
     ErrorHandlerService
   ],
   exports: [
