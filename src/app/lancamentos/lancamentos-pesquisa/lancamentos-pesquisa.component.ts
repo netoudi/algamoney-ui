@@ -5,6 +5,7 @@ import { LancamentoFiltro, LancamentoService } from '../lancamento.service';
 import { ConfirmationService, LazyLoadEvent } from 'primeng/components/common/api';
 import { ToastyService } from 'ng2-toasty';
 import { ErrorHandlerService } from '../../core/error-handler.service';
+import { AuthService } from '../../seguranca/auth.service';
 
 @Component({
   selector: 'app-lancamentos-pesquisa',
@@ -18,7 +19,8 @@ export class LancamentosPesquisaComponent implements OnInit {
   lancamentos = [];
   @ViewChild('tabela') grid;
 
-  constructor(private lancamentoService: LancamentoService,
+  constructor(public auth: AuthService,
+              private lancamentoService: LancamentoService,
               private toasty: ToastyService,
               private confirmation: ConfirmationService,
               private errorHandle: ErrorHandlerService,
