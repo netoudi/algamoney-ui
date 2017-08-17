@@ -1,3 +1,4 @@
+import { environment } from '../../environments/environment';
 import { Injectable } from '@angular/core';
 
 import 'rxjs/add/operator/toPromise';
@@ -8,9 +9,11 @@ import { AuthService } from './auth.service';
 @Injectable()
 export class LogoutService {
 
-  tokensRevokeUrl = 'http://localhost:8080/tokens/revoke';
+  tokensRevokeUrl: string;
 
-  constructor(private http: AuthHttp, private auth: AuthService) { }
+  constructor(private http: AuthHttp, private auth: AuthService) {
+    this.tokensRevokeUrl = `${environment.apiUrl}/tokens/revoke`;
+  }
 
   logout(): Promise<void> {
     return this.http.delete(this.tokensRevokeUrl, { withCredentials: true })
